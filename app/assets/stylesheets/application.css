@@ -1,0 +1,34 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bulma";
+
+/* utilities that extend bulma */
+
+/* flex-based positioning utilities */
+/* call on parent element to make child elements 'sit down' on the baseline regardless of height */
+.is-bottom-aligned { display: flex; justify-content: flex-end; flex-direction: column; }
+
+.is-centered       { display: flex; align-items: center; justify-content: center; }
+
+/* spacing utilities */
+.is-padless       { padding: 0 0 0 0; }
+.is-marginless    { margin: 0 0 0 0; }
+.is-topgapless    { margin-top: 0; padding-top: 0; }
+.is-bottomgapless { margin-bottom: 0; padding-bottom: 0; }
+
+/* appearance utilities */
+.is-borderless    { border: 0; }

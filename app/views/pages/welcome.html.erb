@@ -1,0 +1,33 @@
+<%= content_for :page_title, 'Home Page' %>
+<%= content_for :page_description, 'Home Page' %>
+
+<%= render 'navbar' %>
+
+<section class="hero is-link">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1 class="title is-size-1">Welcome Page</h1>
+          <h3 class="subtitle is-size-3">Welcome Page for <%= appname %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+
+        <p class="title is-size-3">Pages#welcome</p>
+        <p class="subtitle is-size-5">Find me in app/views/pages/welcome.html.erb</p>
+        <p>I'm just body text.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render 'layouts/footer' %>
