@@ -306,7 +306,7 @@ Add signup and signin links to the navbar partial:
 ```
 
 Clean up the devise routes so that you can omit the 'user' path:
-# cleaner Devise routes
+
 devise_scope :user do
   get '/signin',  to: 'devise/sessions#new'
   get '/signout', to: 'devise/sessions#destroy'
