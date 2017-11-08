@@ -55,25 +55,25 @@
           <% end %>
 
           <div class="field">
-            <label class="label">Password (leave blank if you do not want to change your password)</label>
+            <label class="label">Current Password</label>
             <div class="control has-icons-left">
-              <%= f.password_field :password, class: "input", autocomplete: "off", placeholder: "Enter a password (six character minimum)" %>
+              <%= f.password_field :current_password, autocomplete: "off", class: "input", placeholder: "Confirm existing password" %>
               <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Password Confirmation</label>
+            <label class="label">Change Password (leave blank if you do not want to change your password)</label>
             <div class="control has-icons-left">
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: "input", placeholder: "Confirm password by retyping" %>
+              <%= f.password_field :password, class: "input", autocomplete: "off", placeholder: "Enter your NEW password (six character minimum)" %>
               <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Current Password (to confirm a password change)</label>
+            <label class="label">Change Password Confirmation</label>
             <div class="control has-icons-left">
-              <%= f.password_field :current_confirmation, autocomplete: "off", class: "input", placeholder: "Confirm existing password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "input", placeholder: "Confirm NEW password by retyping" %>
               <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
             </div>
           </div>

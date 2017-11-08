@@ -329,18 +329,28 @@ def after_sign_out_path_for(resource_or_scope)
 end
 ```
 
-Integrate Devise Flash Messaging into CSS:
-
-xxx
+Integrate Devise Flash Messaging into CSS
+(note extra CSS and Javascript to dismiss big modal, Bulma color-coded flash messages)
 
 Generate devise views:
-
 ```ruby
 rails g devise:views
 ```
 
-Style the Devise views:
+Style the Devise views.
 
 Add an admin flag to one of your users:
+```ruby
+rails c
+User.all
+u = User.second
+u.isdamin = 'true'
+u.save
+```
 
-Fire up and test the Admin backend:
+Generate the Raild Admin backend:
+```ruby
+rails g rails_admin:install
+```
+
+Fire up and test the Admin backend at /admin for that user.
