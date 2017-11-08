@@ -8,10 +8,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <p class="notice"><%= notice %></p><p class="alert"><%= alert %></p>
+    <% flash.each do |key, value| %>
+      <% if value.class == Array %>
+        <div id="notificationMessage" class="<%= flash_class(key) %>" onClick="document.getElementById('notificationMessage').classList.remove('is-active')"><% value.each do |message| %><%= message %></br><% end %></div>
+      <% else %>
+        <div id="notificationMessage" class="<%= flash_class(key) %>" onClick="document.getElementById('notificationMessage').classList.remove('is-active')"><%= value %></div>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
-
 </html>

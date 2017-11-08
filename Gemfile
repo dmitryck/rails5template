@@ -8,6 +8,7 @@ end
 gem 'bulma-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'

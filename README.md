@@ -37,6 +37,7 @@ Open a tab at http://localhost:1080/ to see emails your app sends - and you can 
 gem 'bulma-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
@@ -159,7 +160,7 @@ Example page layout:
 <%= content_for :page_title, 'Home Page' %>
 <%= content_for :page_description, 'Home Page' %>
 
-<%= render 'navbar' %>
+<%= render 'layouts/navbar' %>
 
 <section class="hero is-link">
   <div class="hero-body">
@@ -272,3 +273,74 @@ Add authentication to the welcome page in pages_controller.rb:
 ```ruby
 before_action :authenticate_user!, except: %i[index about]
 ```
+
+Now browsing to home (index), and about should render normally - but the welcome (post-signin) page should redirect you to the devise login.
+
+Add a few users like u:test@test.org p:testtest and test login, confirming emails via mailcatcher, etc.
+
+Add signup and signin links to the navbar partial:
+
+```ruby
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item has-text-weight-bold" href="<%= root_path %>"><%= appname %></a>
+    <button class="button navbar-burger is-borderless" data-target="navMenu"><span></span><span></span><span></span></button>
+  </div>
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to 'About', about_path, class: "navbar-item" %>
+      <% if user_signed_in? %><%= link_to 'Welcome', welcome_path, class: "navbar-item" %><% end %>
+    </div>
+
+    <div class="navbar-end">
+      <% if user_signed_in? %>
+        <%= link_to 'Edit Your Account', edit_user_registration_path, class: "navbar-item" %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete', class: "navbar-item" %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "navbar-item" %>
+        <%= link_to 'Sign In', new_user_session_path, { :class => "navbar-item" } %>
+      <% end %>
+    </div>
+  </div>
+</nav>
+```
+
+Clean up the devise routes so that you can omit the 'user' path:
+# cleaner Devise routes
+devise_scope :user do
+  get '/signin',  to: 'devise/sessions#new'
+  get '/signout', to: 'devise/sessions#destroy'
+  get '/signup',  to: 'devise/registrations#new'
+  get '/iforgot', to: 'devise/passwords#new'
+  get '/resend',  to: 'devise/confirmations#new'
+  get '/unlock',  to: 'devise/unlocks#new'
+end
+
+Fix up the signin and signout redirects:
+```ruby
+# application_controller.rb
+# override the devise signin and signout url behavior
+def after_sign_in_path_for(resource_or_scope)
+  welcome_url
+end
+
+def after_sign_out_path_for(resource_or_scope)
+  root_url
+end
+```
+
+Integrate Devise Flash Messaging into CSS:
+
+xxx
+
+Generate devise views:
+
+```ruby
+rails g devise:views
+```
+
+Style the Devise views:
+
+Add an admin flag to one of your users:
+
+Fire up and test the Admin backend:
