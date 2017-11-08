@@ -31,7 +31,7 @@ Start mailcatcher with ```mailcatcher```
 
 Open a tab at http://localhost:1080/ to see emails your app sends - and you can send mail via smtp://localhost:1025
 
-### setup Gemfile
+### Organize Gemfile
 
 ```ruby
 gem 'bulma-rails'
@@ -80,7 +80,7 @@ bundle exec guard
 rails s
 ```
 
-### add basic pages
+### add basic pages controller
 ```ruby
 rails g controller pages index welcome about
 ```
@@ -89,7 +89,7 @@ test guard and live reload by loading the root page at localhost:3000/pages/inde
 
 Now add @import "bulma"; to app/assets/stylesheets/application.scss and save - it should automatically reload
 
-Add Bulma extensions to aplication.SCSS
+### Add Bulma extensions to aplication.SCSS
 https://github.com/GiantRavens/bulma_extensions/blob/master/styles.css
 
 ### fix up routes in config/routes.rb
@@ -224,7 +224,7 @@ Footer partial:
 </footer>
 ```
 
-### build user model
+### build user model before setting up devise
 
 ```ruby
 rails g model user firstname:string lastname:string isadmin:boolean
@@ -329,7 +329,7 @@ def after_sign_out_path_for(resource_or_scope)
 end
 ```
 
-Integrate Devise Flash Messaging into CSS
+### Integrate Devise views and flash messages
 (note extra CSS and Javascript to dismiss big modal, Bulma color-coded flash messages)
 
 Generate devise views:
@@ -348,7 +348,7 @@ u.isdamin = 'true'
 u.save
 ```
 
-Generate the Raild Admin backend:
+### Generate a Rails Admin backend:
 ```ruby
 rails g rails_admin:install
 ```
@@ -360,5 +360,14 @@ With all of that done - you're ready to start building out your app.
 I'd recommend customizing the Bulma color SCSS variables documented here:
 
 https://bulma.io/documentation/overview/customize/
+
+### Other goodies
+
+Generate an ERD diagram of your evolving app with
+```ruby
+rails erd
+```
+
+An example is in the root folder.
 
 Have fun!
