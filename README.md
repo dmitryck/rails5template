@@ -1,5 +1,7 @@
 # Rails 5 Template
 
+Clone the app and get going or follow along:
+
 ## prerequisites
 ```ruby
 gem install mailcatcher
@@ -369,5 +371,25 @@ rails erd
 ```
 
 An example is in the root folder.
+
+
+### Using the Template
+
+- clone the repo
+- cd into the directory and remove:
+  - the hidden .git folder
+  - clear the /log and /tmp folders
+  - clear and reinit the db:
+    - rails db:drop
+    - rails db:create
+    - rails db:migrate
+- change the appname helper in application.rb
+- do a project search for Rails5template to check for any other crumbs left behind and change to your new appname
+- bundle update && bundle install
+- run mailcatcher, guard etc. as above
+- create your new users, give one of them isadmin privileges, etc. as above
+- git init
+
+DEVELOP
 
 Have fun!
