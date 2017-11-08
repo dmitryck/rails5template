@@ -354,3 +354,11 @@ rails g rails_admin:install
 ```
 
 Fire up and test the Admin backend at /admin for that user.
+
+With all of that done - you're ready to start building out your app.
+
+I'd recommend customizing the Bulma color SCSS variables documented here:
+
+https://bulma.io/documentation/overview/customize/
+
+Have fun!
